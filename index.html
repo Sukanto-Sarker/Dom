@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo UI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-purple-500 to-indigo-600 min-h-screen flex flex-col items-center justify-center p-4 gap-4">
+
+  <div class="flex flex-col md:flex-row flex-wrap justify-center items-stretch gap-4 w-full max-w-6xl">
+
+    <!-- Add List -->
+    <div class="flex-1 min-w-[280px] max-w-md bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl p-6 order-2 md:order-1">
+      <h3 class="text-green-300 text-center text-3xl font-bold mb-5">Add-List</h3>
+      <ul id="addListDiv" class="mt-5 space-y-3"></ul>
+    </div>
+
+    <!-- To-Do App -->
+    <div class="flex-1 min-w-[280px] max-w-md bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl p-6 order-1 md:order-2">
+      <h1 class="text-center text-white text-3xl font-bold mb-5">✨ To-Do App</h1>
+
+      <!-- Input Section -->
+      <div class="flex flex-col sm:flex-row gap-2">
+        <input 
+          id="addItem"
+          type="text" 
+          placeholder="Write a task..." 
+          class="flex-1 px-4 py-2 rounded-xl outline-none text-gray-900">
+        <button 
+          id="addbtn"
+          class="px-4 py-2 bg-white/90 text-indigo-700 font-semibold rounded-xl hover:bg-white transition">
+          Add
+        </button>
+      </div>
+    </div>
+
+    <!-- Complete List -->
+    <div class="flex-1 min-w-[280px] max-w-md bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl p-6 order-3 md:order-3">
+      <h3 class="text-center text-red-600 text-3xl font-bold mb-5">Complete-List</h3>
+      <ul id="Completeul" class="mt-5 space-y-3"></ul>
+    </div>
+
+  </div>
+  <script>
+    const addItem=document.getElementById("addItem");
+const addbtn =document.getElementById("addbtn");
+const addListDiv=document.getElementById("addListDiv");
+const Completeul=document.getElementById("Completeul");
+let count = 0;
+
+addbtn.addEventListener("click",()=>{
+if (addItem.value.trim()==="") {
+  return;
+}
+count++;
+
+    const li = document.createElement("li");
+    li.className="flex justify-between items-center bg-white/80 rounded-xl px-4 py-2 shadow-md";
+
+    const span  =document.createElement("span")
+    span.textContent=`${count}. ${addItem.value}`;
+
+const completeBtn = document.createElement("button");
+completeBtn.textContent = "Do"; // the checkmark
+completeBtn.className = " cursor-pointer text-white-600 px-2 py-1 bg-green-600  rounded-xl hover:bg-white transition";
+
+completeBtn.addEventListener("click",()=>{
+   const li2 = document.createElement("li");
+    li2.className="flex justify-between items-center bg-white/80 rounded-xl px-4 py-2 shadow-md";
+
+    const span2  =document.createElement("span")
+    span2.textContent=span.textContent;
+
+    const deleteBtn = document.createElement("span");
+    deleteBtn.textContent = "❌";
+    deleteBtn.className ="cursor-pointer";
+
+    li2.append(span2,deleteBtn);
+    Completeul.append(li2);
+    li.remove();
+    span.remove()
+
+    deleteBtn.addEventListener("click",()=>{
+      li2.remove();
+      span2.remove();
+    })
+})
+
+
+    li.append(span,completeBtn);
+    addListDiv.append(li);
+    addItem.value=" ";
+})
+
+
+   </script>
+</body>
+</html>
