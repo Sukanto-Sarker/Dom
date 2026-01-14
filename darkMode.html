@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Mode UI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body id="body" class="bg-white text-gray-900 flex flex-col items-center justify-start min-h-screen p-6 gap-6">
+
+  <!-- Dark Mode Toggle Icon -->
+  <button id="btn" class="flex items-center justify-center w-16 h-16 rounded-full bg-gray-200 hover:bg-gray-300 transition">
+    <!-- Sun/Moon Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-9h-1M4.34 12h-1m15.36 6.36l-.71-.71M6.05 6.05l-.71-.71m12.02 12.02l-.71-.71M6.05 17.95l-.71-.71M12 7a5 5 0 100 10 5 5 0 000-10z" />
+    </svg>
+  </button>
+
+  <!-- Section 1 -->
+  <section class="w-full max-w-4xl bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-4">About Us</h2>
+    <p class="mb-2">We are building interactive UI components using Tailwind CSS and vanilla JavaScript. Dark mode is fully supported.</p>
+    <p>Toggle the sun/moon icon to switch themes instantly.</p>
+  </section>
+
+  <!-- Section 2 -->
+  <section class="w-full max-w-4xl bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-4">Our Services</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="p-4 bg-white dark:bg-gray-700 rounded-lg shadow hover:scale-105 transform transition">Web Development</div>
+      <div class="p-4 bg-white dark:bg-gray-700 rounded-lg shadow hover:scale-105 transform transition">UI/UX Design</div>
+      <div class="p-4 bg-white dark:bg-gray-700 rounded-lg shadow hover:scale-105 transform transition">SEO Optimization</div>
+    </div>
+  </section>
+
+  <!-- Section 3 -->
+  <section class="w-full max-w-4xl bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-4">Testimonials</h2>
+    <div class="flex flex-col gap-3">
+      <div class="p-3 bg-white dark:bg-gray-700 rounded shadow">"Great UI components, very smooth!" - John</div>
+      <div class="p-3 bg-white dark:bg-gray-700 rounded shadow">"Dark mode toggle works perfectly." - Sarah</div>
+      <div class="p-3 bg-white dark:bg-gray-700 rounded shadow">"Tailwind + JS makes prototyping fun." - Mike</div>
+    </div>
+  </section>
+
+<script>
+  const body = document.getElementById("body");
+  const btn = document.getElementById("btn");
+
+  btn.addEventListener("click", () => {
+    body.classList.toggle("bg-gray-900");
+    
+  });
+</script>
+</body>
+</html>
