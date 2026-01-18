@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search List UI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+
+  <div class="w-full max-w-lg bg-white shadow-xl rounded-2xl p-6 space-y-5 border border-gray-200">
+
+    <h2 class="text-2xl font-bold text-gray-700 text-center">Search Tasks</h2>
+
+    <!-- Search Bar -->
+    <div class="relative">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Type to search..."
+        class="w-full px-4 py-3 pl-12 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
+
+      <!-- Search Icon -->
+      <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+        🔍
+      </span>
+    </div>
+
+    <!-- List -->
+    <ul id="taskList" class="space-y-3">
+      <li class="item" class="px-4 py-3 rounded-xl bg-gray-100 border border-gray-200 text-gray-700">Wake up early</li>
+      <li class="item" class="px-4 py-3 rounded-xl bg-gray-100 border border-gray-200 text-gray-700">Brush teeth</li>
+      <li class="item" class="px-4 py-3 rounded-xl bg-gray-100 border border-gray-200 text-gray-700">Make breakfast</li>
+      <li class="item" class="px-4 py-3 rounded-xl bg-gray-100 border border-gray-200 text-gray-700">Study JavaScript</li>
+      <li class="item" class="px-4 py-3 rounded-xl bg-gray-100 border border-gray-200 text-gray-700">Go for a walk</li>
+      <li class="item" class="px-4 py-3 rounded-xl bg-gray-100 border border-gray-200 text-gray-700">Read a book</li>
+    </ul>
+
+  </div>
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const items = document.querySelectorAll(".item");
+
+    searchInput.addEventListener("input", () => {
+      const value = searchInput.value.toLowerCase();
+
+      items.forEach((el) => {
+        const text = el.textContent.toLowerCase();
+
+        if (text.includes(value)) {
+          el.style.display = "block";
+        } else {
+          el.style.display = "none";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
